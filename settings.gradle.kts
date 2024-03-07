@@ -15,3 +15,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "VmeCompose"
 include(":app")
+//include(":screens:home")
+//include(":screens:account")
+//include(":core:network")
+include(":core:network")
+include(":features:home")
