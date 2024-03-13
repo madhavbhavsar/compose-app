@@ -3,10 +3,12 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.apollo3)
+
 }
 
 android {
-    namespace = "com.mad.network"
+    namespace = "com.mad.data"
     compileSdk = 34
 
     defaultConfig {
@@ -45,5 +47,13 @@ dependencies {
 
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
-    implementation(libs.okhttp)
+    //    apollo3
+    implementation(libs.apollo.runtime)
+
+}
+
+apollo {
+    // instruct the compiler to generate Kotlin models
+    generateKotlinModels.set(true)
+    packageNamesFromFilePaths()
 }

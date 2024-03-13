@@ -11,13 +11,15 @@ compose-material3 = "1.2.0"
 kotlin = "1.9.0"
 appcompat = "1.6.1"
 material = "1.11.0"
-
+androidx-work = "2.9.0"
 hilt = "2.48"
 hiltNavigationCompose = "1.0.0"
 hiltExt = "1.1.0"
 
 ksp = "1.9.10-1.0.13"
 apollo3 = "3.2.1"
+okhttp= "4.12.0"
+compose = "1.6.2"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
@@ -25,14 +27,34 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
-androidx-compose-bom = { module="androidx.compose:compose-bom", version.ref="compose-bom" }
-androidx-compose-ui = { group="androidx.compose.ui", name="ui"}
-androidx-compose-material3 = { group="androidx.compose.material3", name="material3"}
-androidx-compose-ui-tooling-preview = { group="androidx.compose.ui", name="ui-tooling-preview"}
-androidx-compose-ui-tooling = { group="androidx.compose.ui", name="ui-tooling"}
-androidx-compose-ui-graphics = { group="androidx.compose.ui", name="ui-graphics"}
-androidx-compose-ui-test-manifest = { group="androidx.compose.ui", name="ui-test-manifest"}
-androidx-compose-ui-test-junit4 = { group="androidx.compose.ui", name="ui-test-junit4"}
+
+
+#androidx-compose-bom = { module="androidx.compose:compose-bom", version.ref="compose-bom" }
+#androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
+#androidx-compose-ui = { group="androidx.compose.ui", name="ui"}
+#androidx-compose-material3 = { group="androidx.compose.material3", name="material3"}
+#androidx-compose-ui-tooling-preview = { group="androidx.compose.ui", name="ui-tooling-preview"}
+#androidx-compose-ui-tooling = { group="androidx.compose.ui", name="ui-tooling"}
+#androidx-compose-ui-graphics = { group="androidx.compose.ui", name="ui-graphics"}
+#androidx-compose-ui-test-manifest = { group="androidx.compose.ui", name="ui-test-manifest"}
+#androidx-compose-ui-test-junit4 = { group="androidx.compose.ui", name="ui-test-junit4"}
+#compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+
+
+# Compose
+compose-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+compose-material3-windowsize = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "compose-material3" }
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
+compose-runtime-livedate-temp = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-activity = { module = "androidx.activity:activity-compose", version = "1.8.2" }
+compose-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.7.0" }
+compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-coil = { module = "io.coil-kt:coil-compose", version = "2.6.0" }
+
+
 #androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 junit = { module = "junit:junit", version.ref = "junit" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -44,12 +66,20 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+hilt-work = { module = "androidx.hilt:hilt-work", version = "1.2.0" }
 
 #ksp
 ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version = "1.9.22-1.0.17" }
 
 apollo-runtime = { group="com.apollographql.apollo3", name="apollo-runtime", version.ref="apollo3" }
 #implementation 'com.apollographql.apollo3:apollo-runtime:3.2.1'
+androidx-work = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-work" }
+androidx-work-testing = { module = "androidx.work:work-testing", version.ref = "androidx-work" }
+
+# Logging
+timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
+
+okhttp = { module="com.squareup.okhttp3:okhttp" , version.ref = "okhttp" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -63,3 +93,27 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 apollo3 = { id = "com.apollographql.apollo3" , version.ref="apollo3"}
 
 [bundles]
+hilt = [
+    "hilt-android",
+    "hilt-android-compiler",
+    "hilt-work"
+]
+
+compose = [
+    "compose-animation",
+    "compose-foundation",
+    "compose-material3",
+    "compose-material3-windowsize",
+    "compose-runtime",
+    "compose-ui",
+    "compose-activity",
+    "compose-viewmodel",
+    "compose-tooling",
+    "compose-runtime-livedate-temp",
+    "compose-coil",
+]
+
+
+#implementation(platform("com.squareup.okhttp3:okhttp-bom:${okHttpVersion}"))
+#implementation "com.squareup.okhttp3:logging-interceptor"
+#implementation "com.squareup.okhttp3:okhttp"

@@ -2,11 +2,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.mad.network"
+    namespace = "com.mad.common"
     compileSdk = 34
 
     defaultConfig {
@@ -42,8 +41,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    ksp(libs.hilt.android.compiler)
-    implementation(libs.hilt.android)
-    implementation(libs.okhttp)
 }
